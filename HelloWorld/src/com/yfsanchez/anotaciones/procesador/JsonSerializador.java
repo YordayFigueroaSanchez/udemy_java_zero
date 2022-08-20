@@ -1,6 +1,7 @@
 package com.yfsanchez.anotaciones.procesador;
 
 import com.yfsanchez.anotaciones.JsonAtributo;
+import com.yfsanchez.anotaciones.procesador.exception.JsonSerializadorException;
 
 import java.lang.reflect.Field;
 import java.util.Arrays;
@@ -10,7 +11,7 @@ public class JsonSerializador {
     public static String toJson(Object object){
 
         if (Objects.isNull(object)){
-            throw new RuntimeException("El objeto no puede ser null");
+            throw new JsonSerializadorException("El objeto no puede ser null");
         }
 
         Field[] atributos = object.getClass().getDeclaredFields();
