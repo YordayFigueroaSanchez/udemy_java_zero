@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 public class Producto {
 
-    @JsonAtributo(nombre = "nameTest")
+    @JsonAtributo(nombre = "nameTest", capitalizar = true)
     private String nombre;
 
     @JsonAtributo(nombre = "amountTest")
