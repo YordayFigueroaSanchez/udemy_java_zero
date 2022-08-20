@@ -4,9 +4,14 @@ import com.yfsanchez.anotaciones.JsonAtributo;
 
 import java.lang.reflect.Field;
 import java.util.Arrays;
+import java.util.Objects;
 
 public class JsonSerializador {
     public static String toJson(Object object){
+
+        if (Objects.isNull(object)){
+            throw new RuntimeException("El objeto no puede ser null");
+        }
 
         Field[] atributos = object.getClass().getDeclaredFields();
         return Arrays.stream(atributos).filter(f -> f.isAnnotationPresent(JsonAtributo.class))
