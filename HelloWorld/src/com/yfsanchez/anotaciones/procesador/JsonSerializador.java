@@ -1,9 +1,12 @@
 package com.yfsanchez.anotaciones.procesador;
 
+import com.yfsanchez.anotaciones.Init;
 import com.yfsanchez.anotaciones.JsonAtributo;
 import com.yfsanchez.anotaciones.procesador.exception.JsonSerializadorException;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -14,6 +17,8 @@ public class JsonSerializador {
         if (Objects.isNull(object)){
             throw new JsonSerializadorException("El objeto no puede ser null");
         }
+
+        inicializarObjeto(object);
 
         Field[] atributos = object.getClass().getDeclaredFields();
         return Arrays.stream(atributos).filter(f -> f.isAnnotationPresent(JsonAtributo.class))
@@ -44,5 +49,24 @@ public class JsonSerializador {
                     }
                     return a + "," + b;
                 }).concat("}");
+    }
+
+    public static void inicializarObjeto(Object object) {
+
+        if (Objects.isNull(object)) {
+            throw new JsonSerializadorException("El objeto no puede ser null");
+        }
+
+        Method[] metodos = object.getClass().getDeclaredMethods();
+        Arrays.stream(metodos).filter(metodo -> metodo.isAnnotationPresent(Init.class))
+                .forEach(metodo-> {
+                    metodo.setAccessible(true);
+                    try {
+                        metodo.invoke(object);
+                    } catch (IllegalAccessException | InvocationTargetException e) {
+                        throw new JsonSerializadorException("problemas al serializar elemento");
+                    }
+                });
+
     }
 }

@@ -1,12 +1,15 @@
 package com.yfsanchez.anotaciones.models;
 
+import com.yfsanchez.anotaciones.Init;
 import com.yfsanchez.anotaciones.JsonAtributo;
 
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class Producto {
 
-    @JsonAtributo(nombre = "nameTest", capitalizar = true)
+    @JsonAtributo(nombre = "nameTest")
     private String nombre;
 
     @JsonAtributo(nombre = "amountTest")
@@ -36,5 +39,12 @@ public class Producto {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+    @Init
+    private void inicializar(){
+        this.nombre = Arrays.stream(this.nombre.split(" "))
+                .map(palabra -> palabra.substring(0,1).toUpperCase() +
+                        palabra.substring(1).toLowerCase())
+                .collect(Collectors.joining( " "));
     }
 }
