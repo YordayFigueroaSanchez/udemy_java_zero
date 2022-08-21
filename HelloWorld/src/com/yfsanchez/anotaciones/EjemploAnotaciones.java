@@ -10,7 +10,7 @@ public class EjemploAnotaciones {
 
         Producto product = new Producto();
         product.setPrecio(500L);
-        product.setNombre("jeisell morrera diaz");
+        product.setNombre("jeisell morrera dIAZ");
         product.setFecha(LocalDate.now());
 
         System.out.println("json = " + JsonSerializador.toJson(product));

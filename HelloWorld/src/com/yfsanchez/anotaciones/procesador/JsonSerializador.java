@@ -6,6 +6,7 @@ import com.yfsanchez.anotaciones.procesador.exception.JsonSerializadorException;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class JsonSerializador {
     public static String toJson(Object object){
@@ -26,8 +27,10 @@ public class JsonSerializador {
                         if (f.getAnnotation(JsonAtributo.class).capitalizar() &&
                         valor instanceof String){
                             String nuevoValor = (String) valor;
-                            nuevoValor = nuevoValor.substring(0,1).toUpperCase() +
-                                    nuevoValor.substring(1).toLowerCase();
+                            nuevoValor = Arrays.stream(nuevoValor.split(" "))
+                                    .map(palabra -> palabra.substring(0,1).toUpperCase() +
+                                            palabra.substring(1).toLowerCase())
+                                            .collect(Collectors.joining( " "));
                             f.set(object,nuevoValor);
                         }
                         return "\""+nombre + "\":\"" +  f.get(object)+"\"";
