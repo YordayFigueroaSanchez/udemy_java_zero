@@ -1,9 +1,6 @@
 package com.yfsanchez.patrones.archivos.servicio;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 public class ArchivoServicio {
     public void crearArchivo(String nombre){
@@ -15,6 +12,20 @@ public class ArchivoServicio {
                     .append("test 2\n")
                     .append("test 3\n");
             buffer.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void crearArchivoPrint(String nombre){
+        File archivo = new File(nombre);
+        try {
+            FileWriter escritor = new FileWriter(archivo, true);
+            PrintWriter printWriter = new PrintWriter(escritor);
+            printWriter.println("test 1");
+            printWriter.println("test 2");
+            printWriter.println("test 3");
+            printWriter.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
