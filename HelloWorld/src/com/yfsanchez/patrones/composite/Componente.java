@@ -14,6 +14,7 @@ abstract public class Componente {
     }
 
     abstract String mostrar(int nivel);
+    abstract boolean buscar(String name);
 
     protected String agregarNivel(int nivel){
         StringBuilder sb = new StringBuilder();

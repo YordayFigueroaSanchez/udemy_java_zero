@@ -36,4 +36,18 @@ public class Directorio extends Componente{
         }
         return sb.toString();
     }
+
+    @Override
+    boolean buscar(String name) {
+        if (this.name.equalsIgnoreCase(name)){
+            return true;
+        } else {
+            for (Componente hijo: this.hijos){
+                if (hijo.buscar(name)){
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
 }
