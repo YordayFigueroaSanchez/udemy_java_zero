@@ -42,12 +42,13 @@ public class Directorio extends Componente{
         if (this.name.equalsIgnoreCase(name)){
             return true;
         } else {
-            for (Componente hijo: this.hijos){
-                if (hijo.buscar(name)){
-                    return true;
-                }
-            }
-            return false;
+            return hijos.stream().anyMatch(componente -> componente.buscar(name));
+//            for (Componente hijo: this.hijos){
+//                if (hijo.buscar(name)){
+//                    return true;
+//                }
+//            }
+//            return false;
         }
     }
 }

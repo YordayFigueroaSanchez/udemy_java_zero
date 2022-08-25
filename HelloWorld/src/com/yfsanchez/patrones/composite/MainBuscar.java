@@ -16,6 +16,6 @@ public class MainBuscar {
         root.addComponente(java);
         root.addComponente(new Archivo("root2.doc"));
 
-        System.out.println(root.buscar("src2"));
+        System.out.println(root.buscar("src"));
     }
 }
