@@ -21,4 +21,9 @@ public class Corporacion extends Observable{
         precio = nuevoPrecio;
         notifyObservers();
     }
+
+    @Override
+    public String toString() {
+        return getNombre() + " nuevo precio " + getPrecio();
+    }
 }
