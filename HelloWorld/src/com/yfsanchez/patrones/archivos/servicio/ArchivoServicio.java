@@ -22,6 +22,8 @@ public class ArchivoServicio {
         try {
             FileWriter escritor = new FileWriter(archivo, true);
             PrintWriter printWriter = new PrintWriter(escritor);
+            printWriter.printf("Hola %s", "Test");
+            printWriter.println();
             printWriter.println("test 1");
             printWriter.println("test 2");
             printWriter.println("test 3");
