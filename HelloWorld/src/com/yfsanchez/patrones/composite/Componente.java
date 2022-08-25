@@ -13,8 +13,15 @@ abstract public class Componente {
         return name;
     }
 
-    abstract String mostrar();
+    abstract String mostrar(int nivel);
 
+    protected String agregarNivel(int nivel){
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < nivel; i++) {
+            sb.append("\t");
+        }
+        return sb.toString();
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

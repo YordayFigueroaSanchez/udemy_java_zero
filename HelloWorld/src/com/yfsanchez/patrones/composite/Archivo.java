@@ -6,7 +6,7 @@ public class Archivo extends Componente{
     }
 
     @Override
-    String mostrar() {
-        return name;
+    String mostrar(int nivel) {
+        return agregarNivel(nivel)+name;
     }
 }

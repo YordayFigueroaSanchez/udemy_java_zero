@@ -22,13 +22,14 @@ public class Directorio extends Componente{
     }
 
     @Override
-    String mostrar() {
+    String mostrar(int nivel) {
         StringBuilder sb = new StringBuilder();
-        sb.append(name)
+        sb.append(agregarNivel(nivel))
+                .append(name)
                 .append("/")
                 .append("\n");
         for (Componente hijo: this.hijos){
-            sb.append(hijo.mostrar());
+            sb.append(hijo.mostrar(nivel+1));
             if (hijo instanceof Archivo){
                    sb.append("\n");
             }

@@ -16,6 +16,6 @@ public class Main {
         root.addComponente(java);
         root.addComponente(new Archivo("root2.doc"));
 
-        System.out.println(root.mostrar());
+        System.out.println(root.mostrar(0));
     }
 }
