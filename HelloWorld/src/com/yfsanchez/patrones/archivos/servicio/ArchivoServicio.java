@@ -9,6 +9,10 @@ public class ArchivoServicio {
         File archivo = new File(nombre);
         try {
             FileWriter escritor = new FileWriter(archivo);
+            escritor.append("test 1\n")
+                    .append("test 2\n")
+                    .append("test 3\n");
+            escritor.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
