@@ -19,15 +19,12 @@ public class ArchivoServicio {
 
     public void crearArchivoPrint(String nombre){
         File archivo = new File(nombre);
-        try {
-            FileWriter escritor = new FileWriter(archivo, true);
-            PrintWriter printWriter = new PrintWriter(escritor);
+        try (PrintWriter printWriter = new PrintWriter(new FileWriter(archivo, true))){
             printWriter.printf("Hola %s", "Test");
             printWriter.println();
             printWriter.println("test 1");
             printWriter.println("test 2");
             printWriter.println("test 3");
-            printWriter.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
