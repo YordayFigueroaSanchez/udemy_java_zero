@@ -1,6 +1,6 @@
-package com.yfsanchez.patrones.archivos;
+package com.yfsanchez.archivos;
 
-import com.yfsanchez.patrones.archivos.servicio.ArchivoServicio;
+import com.yfsanchez.archivos.servicio.ArchivoServicio;
 
 public class MainLeer {
     public static void main(String[] args) {

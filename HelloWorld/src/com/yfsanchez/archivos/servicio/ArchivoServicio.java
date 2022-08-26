@@ -1,4 +1,4 @@
-package com.yfsanchez.patrones.archivos.servicio;
+package com.yfsanchez.archivos.servicio;
 
 import java.io.*;
 import java.util.Scanner;
