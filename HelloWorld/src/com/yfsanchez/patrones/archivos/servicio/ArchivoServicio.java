@@ -29,4 +29,21 @@ public class ArchivoServicio {
             throw new RuntimeException(e);
         }
     }
+
+    public String leerArchivo(String nombre){
+        File archivo = new File(nombre);
+        StringBuilder sb = new StringBuilder();
+        try {
+            FileReader lector = new FileReader(archivo);
+            BufferedReader buffer = new BufferedReader(lector);
+            String linea;
+            while ((linea = buffer.readLine()) != null){
+                sb.append(linea).append("\n");
+            }
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return sb.toString();
+    }
 }
