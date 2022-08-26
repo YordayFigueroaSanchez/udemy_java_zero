@@ -41,7 +41,7 @@ public class ArchivoServicio {
             while ((linea = buffer.readLine()) != null){
                 sb.append(linea).append("\n");
             }
-
+            lector.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -58,7 +58,7 @@ public class ArchivoServicio {
             while (lector.hasNext()){
                 sb.append(lector.next()).append("\n");
             }
-
+            lector.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
