@@ -1,6 +1,7 @@
 package com.yfsanchez.patrones.archivos.servicio;
 
 import java.io.*;
+import java.util.Scanner;
 
 public class ArchivoServicio {
     public void crearArchivo(String nombre){
@@ -39,6 +40,23 @@ public class ArchivoServicio {
             String linea;
             while ((linea = buffer.readLine()) != null){
                 sb.append(linea).append("\n");
+            }
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return sb.toString();
+    }
+
+    public String leerArchivoScanner(String nombre){
+        File archivo = new File(nombre);
+        StringBuilder sb = new StringBuilder();
+        try {
+            Scanner lector = new Scanner(archivo);
+            lector.useDelimiter("\n");
+            String linea;
+            while (lector.hasNext()){
+                sb.append(lector.next()).append("\n");
             }
 
         } catch (IOException e) {
